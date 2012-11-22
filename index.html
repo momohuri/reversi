@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Othello IA</title>
+		<script src="JSGlib.js"></script>
+		<script src="Controlor.class.js"></script>
+		<script src="Pion.class.js"></script>
+		<script>
+			window.onload=function()
+			{
+				var level=new Room(512,512);
+				level.eventStart=function()
+				{
+					Game.instanceCreate(0,0,Controlor);
+				};
+				
+				Game.setRooms([level]);
+				Game.loadAndRun('jeu',
+				{
+					'pions': './images/pions.png'
+				});
+			};
+		</script>
+		<style>
+			#joueur
+			{
+				display: inline-block;
+				width: 64px;
+				height: 64px;
+				background-image: url('./images/pions.png');
+				background-position: -64px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<p style="text-align: center;">
+			<canvas id="jeu" style="border: 3px solid #000; background-image: url('./images/fond.png');">
+				<b>Oh, votre navigateur n'est pas capable d'afficher le jeu...<br />
+				Avez-vous déjà essayé <a href="http://www.mozilla.com/fr/firefox/">Mozilla
+				Firefox</a>, <a href="http://www.opera.com/">Opera</a> ou encore
+				<a href="http://www.google.com/chrome/">Google Chrome</a> ?</b>
+			</canvas>
+		</p>
+		<p style="text-align: center;">
+			Noirs : <span id="total_red">2</span><br />
+			Blancs : <span id="total_green">2</span>
+		</p>
+		<p style="text-align: center; font-weight: bold;">
+			C'est au joueur <span id="joueur"></span> de jouer !
+		</p>
+	</body>
+</html>
